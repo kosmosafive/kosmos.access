@@ -1,7 +1,7 @@
 {
   "name": "kosmosafive/kosmos.access",
   "description": "Kosmos: Права доступа",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/kosmosafive/kosmos.access",
   "type": "bitrix-d7-module",
   "minimum-stability": "stable",
