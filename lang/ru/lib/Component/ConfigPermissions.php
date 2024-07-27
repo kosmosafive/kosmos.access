@@ -1,0 +1,3 @@
+<?php
+
+$MESS['KOSMOS_ACCESS_CONFIG_PERMISSION_TITLE'] = 'Права доступа';
