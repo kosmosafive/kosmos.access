@@ -47,17 +47,22 @@ class kosmos_access extends \CModule
 
     public function DoInstall(): void
     {
+        $this->DoInstallSilent();
+
         global $APPLICATION;
-
-        ModuleManager::registerModule($this->MODULE_ID);
-
-        $this->InstallFiles();
-        $this->InstallData();
 
         $APPLICATION->IncludeAdminFile(
             Loc::getMessage('KOSMOS_ACCESS_INSTALL_TITLE'),
             $this->GetPath() . '/install/step.php'
         );
+    }
+
+    public function DoInstallSilent(): void
+    {
+        ModuleManager::registerModule($this->MODULE_ID);
+
+        $this->InstallFiles();
+        $this->InstallData();
     }
 
     public function DoUninstall(): void
@@ -74,14 +79,19 @@ class kosmos_access extends \CModule
                 $this->GetPath() . '/install/unstep1.php'
             );
         } elseif ($step === 2) {
-            $this->UnInstallFiles();
-            ModuleManager::unRegisterModule($this->MODULE_ID);
+            $this->DoInstallSilent();
 
             $APPLICATION->IncludeAdminFile(
                 Loc::getMessage('KOSMOS_ACCESS_UNINSTALL_TITLE'),
                 $this->GetPath() . '/install/unstep2.php'
             );
         }
+    }
+
+    public function DoUninstallSilent(bool $saveData = false): void
+    {
+        $this->UnInstallFiles();
+        ModuleManager::unRegisterModule($this->MODULE_ID);
     }
 
     public function InstallFiles($arParams = []): void
