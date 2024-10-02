@@ -79,7 +79,7 @@ class kosmos_access extends \CModule
                 $this->GetPath() . '/install/unstep1.php'
             );
         } elseif ($step === 2) {
-            $this->DoInstallSilent();
+            $this->DoUninstallSilent();
 
             $APPLICATION->IncludeAdminFile(
                 Loc::getMessage('KOSMOS_ACCESS_UNINSTALL_TITLE'),
